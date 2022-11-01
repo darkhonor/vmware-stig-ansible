@@ -1,0 +1,24 @@
+---
+# ESXi STIG Tasks, Version 1, Release 2, 8 Feb 2022
+- name: V-239258 - ESXI-67-000001
+  community.vmware.vmware_host_lockdown:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    esxi_hostname: '{{ esxi_hostname }}'
+    # Valid values for state are 'normal' and 'strict'
+    state: normal
+  delegate_to: localhost
+
+- name: V-239259 - ESXI-67-000002
+  community.vmware.vmware_host_config_manager:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    esxi_hostname: '{{ esxi_hostname }}'
+    options:
+      'DCUI.Access': 'root'
+  delegate_to: localhost
+  
+
+
