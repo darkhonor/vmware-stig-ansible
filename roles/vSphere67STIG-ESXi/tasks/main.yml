@@ -7,10 +7,10 @@
     password: '{{ vcenter_password }}'
     esxi_hostname: '{{ esxi_hostname }}'
     # Valid values for state are 'normal' and 'strict'
-    state: '{{ vSphere67ESXi_V239528_Lockdown }}'
+    state: '{{ vSphere67ESXi_V239258_Lockdown }}'
   delegate_to: localhost
   when:
-    - vSphere67ESXi_V239528_Manage
+    - vSphere67ESXi_V239258_Manage
 
 - name: V-239259 - ESXI-67-000002
   community.vmware.vmware_host_config_manager:
@@ -22,7 +22,42 @@
       'DCUI.Access': 'root'
   delegate_to: localhost
   when:
-    - vSphere67ESXi_V239529_Manage
+    - vSphere67ESXi_V239259_Manage
   
+- name: V-239260 - ESXI-67-000003
+  community.vmware.vmware_host_lockdown_exceptions:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    esxi_hostname: '{{ esxi_hostname }}'
+    exception_users: ['{{ vSphere67ESXi_V239260_Lockdown_Users }}']
+    state: set
+  delegate_to: localhost
+  when:
+    - vSphere67ESXi_V239260_Manage
 
+- name: V-239261 - ESXI-67-000004
+  community.vmware.vmware_host_config_manager:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    esxi_hostname: '{{ esxi_hostname }}'
+    options:
+      'Syslog.global.logHost': '{{ vSphere67ESXi_V239261_Syslog_Server }}'
+  delegate_to: localhost
+  when:
+    - vSphere67ESXi_V239261_Manage
+
+- name: V-239262 - ESXI-67-000005
+  community.vmware.vmware_host_config_manager:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    esxi_hostname: '{{ esxi_hostname }}'
+    options:
+      'Security.AccountLockFailures': {{ vSphere67ESXi_V239262_AccountLockFailures }}
+  delegate_to: localhost
+  when:
+    - vSphere67ESXi_V239262_Manage
+  
 

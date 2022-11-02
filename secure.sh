@@ -1,1 +1,1 @@
-ansible-playbook -v -k -i hosts.vmware.yml site.yml
+ansible-playbook -v -k -i hosts -i hosts.vmware.yml site.yml

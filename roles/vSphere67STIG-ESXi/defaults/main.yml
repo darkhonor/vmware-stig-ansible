@@ -1,7 +1,16 @@
 ---
 # V-239258 - ESXI-67-000001
-vSphere67ESXi_V239528_Manage: True
+vSphere67ESXi_V239258_Manage: True
 # -- Valid values for Lockdown: normal, strict
-vSphere67ESXi_V239528_Lockdown: normal
-# V-239259 - ESXI-67-000001
-vSphere67ESXi_V239529_Manage: True
+vSphere67ESXi_V239258_Lockdown: normal
+# V-239259 - ESXI-67-000002
+vSphere67ESXi_V239259_Manage: True
+# V-239260 - ESXI-67-000003
+vSphere67ESXi_V239260_Manage: True
+vSphere67ESXi_V239260_Lockdown_Users: ''
+# V-239261 - ESXI-67-000004
+vSphere67ESXi_V239261_Manage: True
+vSphere67ESXi_V239261_Syslog_Server: 'udp://localhost.localdomain'
+# V-239262 - ESXI-67-000005
+vSphere67ESXi_V239262_Manage: True
+vSphere67ESXi_V239262_AccountLockFailures: 3

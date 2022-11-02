@@ -1,0 +1,4 @@
+# This is a collection of variables for the local site.  Use this file to overwrite any option from the STIG
+# Example:
+vSphere67ESXi_V239258_Manage: False
+vSphere67ESXi_V239258_Lockdown: disabled

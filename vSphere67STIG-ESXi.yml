@@ -2,5 +2,6 @@
   gather_facts: normal
   vars_files:
     - vars/esxi_vars.yml
+    - vars/site_local_vars.yml
   roles:
     - vSphere67STIG-ESXi
