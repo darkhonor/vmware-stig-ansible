@@ -191,6 +191,113 @@
   when:
     - vSphere67ESXi_V239273_Manage
 
+# V-239274: The ESXi host SSH daemon must not permit Kerberos authentication.
+- name: V-239274 - ESXI-67-000019
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^\s*(?i)KerberosAuthentication\s+'
+    line: "{{ vSphere67ESXi_V239274_KerberosAuthentication }}"
+    state: present
+  when:
+    - vSphere67ESXi_V239274_Manage
+
+# V-239275: The ESXi host SSH daemon must perform strict mode checking of home directory configuration files.
+- name: V-239275 - ESXI-67-000020
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^\s*(?i)StrictModes\s+'
+    line: "{{ vSphere67ESXi_V239275_StrictModes }}"
+    state: present
+  when:
+    - vSphere67ESXi_V239275_Manage
+
+# V-239276: The ESXi host SSH daemon must not allow compression or must only allow compression after successful authentication.
+- name: V-239276 - ESXI-67-000021
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^\s*(?i)Compression\s+'
+    line: "{{ vSphere67ESXi_V239276_Compression }}"
+    state: present
+  when:
+    - vSphere67ESXi_V239276_Manage
+
+# V-239277: The ESXi host SSH daemon must be configured to not allow gateway ports.
+- name: V-239277 - ESXI-67-000022
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^\s*(?i)GatewayPorts\s+'
+    line: "{{ vSphere67ESXi_V239277_GatewayPorts }}"
+    state: present
+  when:
+    - vSphere67ESXi_V239277_Manage
+
+# V-239278: The ESXi host SSH daemon must be configured to not allow X11 forwarding.
+- name: V-239278 - ESXI-67-000023
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^\s*(?i)X11Forwarding\s+'
+    line: "{{ vSphere67ESXi_V239278_X11Forwarding }}"
+    state: present
+  when:
+    - vSphere67ESXi_V239278_Manage
+
+# V-239279: The ESXi host SSH daemon must not accept environment variables from the client.
+- name: V-239279 - ESXI-67-000024
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^\s*(?i)AcceptEnv\s+'
+    line: "{{ vSphere67ESXi_V239279_AcceptEnv }}"
+    state: present
+  when:
+    - vSphere67ESXi_V239279_Manage
+
+# V-239280: The ESXi host SSH daemon must not permit tunnels.
+- name: V-239280 - ESXI-67-000025
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^\s*(?i)PermitTunnel\s+'
+    line: "{{ vSphere67ESXi_V239280_PermitTunnel }}"
+    state: present
+  when:
+    - vSphere67ESXi_V239280_Manage
+
+# V-239281: The ESXi host SSH daemon must set a timeout count on idle sessions.
+- name: V-239281 - ESXI-67-000026
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^\s*(?i)ClientAliveCountMax\s+'
+    line: "{{ vSphere67ESXi_V239281_ClientAliveCountMax }}"
+    state: present
+  when:
+    - vSphere67ESXi_V239281_Manage
+
+# V-239282: The ESXi host SSH daemon must set a timeout interval on idle sessions.
+- name: V-239282 - ESXI-67-000027
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^\s*(?i)ClientAliveInterval\s+'
+    line: "{{ vSphere67ESXi_V239282_ClientAliveInterval }}"
+    state: present
+  when:
+    - vSphere67ESXi_V239282_Manage
+
+# V-239283: The ESXi host SSH daemon must limit connections to a single session.
+- name: V-239283 - ESXI-67-000028
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^\s*(?i)ClientAliveInterval\s+'
+    line: "{{ vSphere67ESXi_V239283_MaxSessions }}"
+    state: present
+  when:
+    - vSphere67ESXi_V239283_Manage
+
+# V-239284: The ESXi host must remove keys from the SSH authorized_keys file.
+- name: V-239284 - ESXI-67-000029
+  copy:
+    dest: "{{ vSphere67ESXi_V239284_etc_ssh_keys_authorized_keys_Dest }}"
+    content: "{{ vSphere67ESXi_V239284_etc_ssh_keys_authorized_keys_Content }}"
+  when:
+    - vSphere67ESXi_V239284_Manage
 
 # Stop the SSH Service
 - name: Stop SSH Service

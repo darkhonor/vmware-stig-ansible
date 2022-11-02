@@ -45,4 +45,37 @@ vSphere67ESXi_V239272_PermitUserEnvironment: PermitUserEnvironment no
 # V-239273 - ESXI-67-000018
 vSphere67ESXi_V239273_Manage: True
 vSphere67ESXi_V239273_GSSAPIAuthentication: GSSAPIAuthentication no
-
+# V-239274 - ESXI-67-000019
+vSphere67ESXi_V239274_Manage: True
+vSphere67ESXi_V239274_KerberosAuthentication: KerberosAuthentication no
+# V-239275 - ESXI-67-000020
+vSphere67ESXi_V239275_Manage: True
+vSphere67ESXi_V239275_StrictModes: StrictModes yes
+# V-239276 - ESXI-67-000021
+vSphere67ESXi_V239276_Manage: True
+vSphere67ESXi_V239276_Compression: Compression no
+# V-239277 - ESXI-67-000022
+vSphere67ESXi_V239277_Manage: True
+vSphere67ESXi_V239277_GatewayPorts: GatewayPorts no
+# V-239278 - ESXI-67-000023
+vSphere67ESXi_V239278_Manage: True
+vSphere67ESXi_V239278_X11Forwarding: X11Forwarding no
+# V-239279 - ESXI-67-000024
+vSphere67ESXi_V239279_Manage: True
+vSphere67ESXi_V239279_AcceptEnv: AcceptEnv
+# V-239280 - ESXI-67-000025
+vSphere67ESXi_V239280_Manage: True
+vSphere67ESXi_V239280_PermitTunnel: PermitTunnel no
+# V-239281 - ESXI-67-000026
+vSphere67ESXi_V239281_Manage: True
+vSphere67ESXi_V239281_ClientAliveCountMax: ClientAliveCountMax 3
+# V-239282 - ESXI-67-000027
+vSphere67ESXi_V239282_Manage: True
+vSphere67ESXi_V239282_ClientAliveInterval: ClientAliveInterval 200
+# V-239283 - ESXI-67-000028
+vSphere67ESXi_V239283_Manage: True
+vSphere67ESXi_V239283_MaxSessions: MaxSessions 1
+# V-239284 - ESXI-67-000029
+vSphere67ESXi_V239284_Manage: True
+vSphere67ESXi_V239284_etc_ssh_keys_authorized_keys_Dest: /etc/ssh/keys-root/authorized_keys
+vSphere67ESXi_V239284_etc_ssh_keys_authorized_keys_Content: ''
