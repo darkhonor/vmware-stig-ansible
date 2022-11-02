@@ -1,0 +1,6 @@
+- hosts: esxi
+  gather_facts: normal
+  vars_files:
+    - vars/esxi_vars.yml
+  roles:
+    - vSphere67STIG-ESXi

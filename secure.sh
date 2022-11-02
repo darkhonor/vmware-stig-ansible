@@ -1,0 +1,1 @@
+ansible-playbook -v -k -i hosts.vmware.yml site.yml

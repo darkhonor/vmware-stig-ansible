@@ -1,0 +1,1 @@
+- import_playbook: vSphere67STIG-ESXi.yml

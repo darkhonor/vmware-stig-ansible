@@ -7,8 +7,10 @@
     password: '{{ vcenter_password }}'
     esxi_hostname: '{{ esxi_hostname }}'
     # Valid values for state are 'normal' and 'strict'
-    state: normal
+    state: '{{ vSphere67ESXi_V239528_Lockdown }}'
   delegate_to: localhost
+  when:
+    - vSphere67ESXi_V239528_Manage
 
 - name: V-239259 - ESXI-67-000002
   community.vmware.vmware_host_config_manager:
@@ -19,6 +21,8 @@
     options:
       'DCUI.Access': 'root'
   delegate_to: localhost
+  when:
+    - vSphere67ESXi_V239529_Manage
   
 
 

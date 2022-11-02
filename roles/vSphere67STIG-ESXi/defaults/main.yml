@@ -1,0 +1,7 @@
+---
+# V-239258 - ESXI-67-000001
+vSphere67ESXi_V239528_Manage: True
+# -- Valid values for Lockdown: normal, strict
+vSphere67ESXi_V239528_Lockdown: normal
+# V-239259 - ESXI-67-000001
+vSphere67ESXi_V239529_Manage: True
