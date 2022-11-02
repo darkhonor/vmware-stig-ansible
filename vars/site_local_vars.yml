@@ -3,3 +3,5 @@
 vSphere67ESXi_V239258_Manage: False
 vSphere67ESXi_V239258_Lockdown: disabled
 vSphere67ESXi_V239260_Manage: False
+vSphere67ESXi_V239270_Manage: False
+vSphere67ESXi_V239270_PermitRootLogin: PermitRootLogin yes

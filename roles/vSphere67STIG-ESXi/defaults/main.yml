@@ -24,3 +24,25 @@ vSphere67ESXi_V239265_etc_issue: 'You are accessing a U.S. Government (USG) Info
 # V-239266 - ESXI-67-000009
 vSphere67ESXi_V239266_Manage: True
 vSphere67ESXi_V239266_Banner_Line: Banner /etc/issue
+# V-239267 - ESXI-67-000010
+vSphere67ESXi_V239267_Manage: True
+vSphere67ESXi_V239267_FIPS_Mode: FipsMode yes
+# V-239268 - ESXI-67-000012
+vSphere67ESXi_V239268_Manage: True
+vSphere67ESXi_V239268_IgnoreRhosts: IgnoreRhosts yes
+# V-239269 - ESXI-67-000013
+vSphere67ESXi_V239269_Manage: True
+vSphere67ESXi_V239269_HostbasedAuthentication: HostbasedAuthentication no
+# V-239270 - ESXI-67-000014
+vSphere67ESXi_V239270_Manage: True
+vSphere67ESXi_V239270_PermitRootLogin: PermitRootLogin no
+# V-239271 - ESXI-67-000015
+vSphere67ESXi_V239271_Manage: True
+vSphere67ESXi_V239271_PermitEmptyPasswords: PermitEmptyPasswords no
+# V-239272 - ESXI-67-000016
+vSphere67ESXi_V239272_Manage: True
+vSphere67ESXi_V239272_PermitUserEnvironment: PermitUserEnvironment no
+# V-239273 - ESXI-67-000018
+vSphere67ESXi_V239273_Manage: True
+vSphere67ESXi_V239273_GSSAPIAuthentication: GSSAPIAuthentication no
+

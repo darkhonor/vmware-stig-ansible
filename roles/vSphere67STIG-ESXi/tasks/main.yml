@@ -121,6 +121,77 @@
   when:
     - vSphere67ESXi_V239266_Manage
   
+# V-239267: The ESXi host SSH daemon must use DoD-approved encryption to protect the confidentiality of remote access sessions.
+- name: V-239267 - ESXI-67-000010
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^\s*(?i)FipsMode\s+'
+    line: "{{ vSphere67ESXi_V239267_FIPS_Mode }}"
+    state: present
+  when:
+    - vSphere67ESXi_V239267_Manage
+
+# V-239268: The ESXi host SSH daemon must ignore .rhosts files.
+- name: V-239268 - ESXI-67-000012
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^\s*(?i)IgnoreRhosts\s+'
+    line: "{{ vSphere67ESXi_V239268_IgnoreRhosts }}"
+    state: present
+  when:
+    - vSphere67ESXi_V239268_Manage
+
+# V-239269: The ESXi host SSH daemon must not allow host-based authentication.
+- name: V-239269 - ESXI-67-000013
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^\s*(?i)HostbasedAuthentication\s+'
+    line: "{{ vSphere67ESXi_V239269_HostbasedAuthentication }}"
+    state: present
+  when:
+    - vSphere67ESXi_V239269_Manage
+
+# V-239270: The ESXi host SSH daemon must not permit root logins.
+- name: V-239270 - ESXI-67-000014
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^\s*(?i)PermitRootLogin\s+'
+    line: "{{ vSphere67ESXi_V239270_PermitRootLogin }}"
+    state: present
+  when:
+    - vSphere67ESXi_V239270_Manage
+
+# V-239271: The ESXi host SSH daemon must not allow authentication using an empty password.
+- name: V-239271 - ESXI-67-000015
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^\s*(?i)PermitEmptyPasswords\s+'
+    line: "{{ vSphere67ESXi_V239271_PermitEmptyPasswords }}"
+    state: present
+  when:
+    - vSphere67ESXi_V239271_Manage
+
+# V-239272: The ESXi host SSH daemon must not permit user environment settings.
+- name: V-239272 - ESXI-67-000016
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^\s*(?i)PermitUserEnvironment\s+'
+    line: "{{ vSphere67ESXi_V239272_PermitUserEnvironment }}"
+    state: present
+  when:
+    - vSphere67ESXi_V239272_Manage
+
+# V-239273: The ESXi host SSH daemon must not permit GSSAPI authentication.
+- name: V-239273 - ESXI-67-000018
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^\s*(?i)GSSAPIAuthentication\s+'
+    line: "{{ vSphere67ESXi_V239273_GSSAPIAuthentication }}"
+    state: present
+  when:
+    - vSphere67ESXi_V239273_Manage
+
+
 # Stop the SSH Service
 - name: Stop SSH Service
   community.vmware.vmware_host_service_manager:
