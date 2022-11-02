@@ -1,6 +1,7 @@
 - hosts: esxi
-  gather_facts: normal
+  gather_facts: no
   vars_files:
+    - vars/main.yml
     - vars/esxi_vars.yml
     - vars/site_local_vars.yml
   roles:

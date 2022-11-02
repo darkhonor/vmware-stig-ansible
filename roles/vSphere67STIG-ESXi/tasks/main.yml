@@ -7,6 +7,7 @@
     username: '{{ vcenter_username }}'
     password: '{{ vcenter_password }}'
     esxi_hostname: '{{ esxi_hostname }}'
+    validate_certs: '{{ vSphere67_Validate_Certs }}'
     state: '{{ vSphere67ESXi_V239258_Lockdown }}'
   delegate_to: localhost
   when:
@@ -19,6 +20,7 @@
     username: '{{ vcenter_username }}'
     password: '{{ vcenter_password }}'
     esxi_hostname: '{{ esxi_hostname }}'
+    validate_certs: '{{ vSphere67_Validate_Certs }}'
     options:
       'DCUI.Access': 'root'
   delegate_to: localhost
@@ -32,6 +34,7 @@
     username: '{{ vcenter_username }}'
     password: '{{ vcenter_password }}'
     esxi_hostname: '{{ esxi_hostname }}'
+    validate_certs: '{{ vSphere67_Validate_Certs }}'
     exception_users: ['{{ vSphere67ESXi_V239260_Lockdown_Users }}']
     state: set
   delegate_to: localhost
@@ -45,6 +48,7 @@
     username: '{{ vcenter_username }}'
     password: '{{ vcenter_password }}'
     esxi_hostname: '{{ esxi_hostname }}'
+    validate_certs: '{{ vSphere67_Validate_Certs }}'
     options:
       'Syslog.global.logHost': '{{ vSphere67ESXi_V239261_Syslog_Server }}'
   delegate_to: localhost
@@ -58,8 +62,9 @@
     username: '{{ vcenter_username }}'
     password: '{{ vcenter_password }}'
     esxi_hostname: '{{ esxi_hostname }}'
+    validate_certs: '{{ vSphere67_Validate_Certs }}'
     options:
-      'Security.AccountLockFailures': {{ vSphere67ESXi_V239262_AccountLockFailures }}
+      'Security.AccountLockFailures': '{{ vSphere67ESXi_V239262_AccountLockFailures }}'
   delegate_to: localhost
   when:
     - vSphere67ESXi_V239262_Manage
@@ -71,8 +76,9 @@
     username: '{{ vcenter_username }}'
     password: '{{ vcenter_password }}'
     esxi_hostname: '{{ esxi_hostname }}'
+    validate_certs: '{{ vSphere67_Validate_Certs }}'
     options:
-      'Security.AccountLockFailures': {{ vSphere67ESXi_V239263_AccountUnlockTime }}
+      'Security.AccountUnlockTime': '{{ vSphere67ESXi_V239263_AccountUnlockTime }}'
   delegate_to: localhost
   when:
     - vSphere67ESXi_V239263_Manage
@@ -86,6 +92,7 @@
     username: '{{ vcenter_username }}'
     password: '{{ vcenter_password }}'
     esxi_hostname: '{{ esxi_hostname }}'
+    validate_certs: '{{ vSphere67_Validate_Certs }}'
     options:
       'Config.Etc.issue': '{{ vSphere67ESXi_V239265_etc_issue }}'
   delegate_to: localhost
@@ -99,6 +106,7 @@
     username: '{{ vcenter_username }}'
     password: '{{ vcenter_password }}'
     esxi_hostname: '{{ esxi_hostname }}'
+    validate_certs: '{{ vSphere67_Validate_Certs }}'
     service_name: 'TSM-SSH'
     state: 'start'
   delegate_to: localhost
@@ -120,6 +128,7 @@
     username: '{{ vcenter_username }}'
     password: '{{ vcenter_password }}'
     esxi_hostname: '{{ esxi_hostname }}'
+    validate_certs: '{{ vSphere67_Validate_Certs }}'
     service_name: 'TSM-SSH'
     state: 'stop'
   delegate_to: localhost
