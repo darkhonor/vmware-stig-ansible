@@ -1,17 +1,18 @@
 ---
 # ESXi STIG Tasks, Version 1, Release 2, 8 Feb 2022
+# V-239258: Access to the ESXi host must be limited by enabling Lockdown Mode.
 - name: V-239258 - ESXI-67-000001
   community.vmware.vmware_host_lockdown:
     hostname: '{{ vcenter_hostname }}'
     username: '{{ vcenter_username }}'
     password: '{{ vcenter_password }}'
     esxi_hostname: '{{ esxi_hostname }}'
-    # Valid values for state are 'normal' and 'strict'
     state: '{{ vSphere67ESXi_V239258_Lockdown }}'
   delegate_to: localhost
   when:
     - vSphere67ESXi_V239258_Manage
 
+# V-239259: The ESXi host must verify the DCUI.Access list.
 - name: V-239259 - ESXI-67-000002
   community.vmware.vmware_host_config_manager:
     hostname: '{{ vcenter_hostname }}'
@@ -23,7 +24,8 @@
   delegate_to: localhost
   when:
     - vSphere67ESXi_V239259_Manage
-  
+
+# V-239260: The ESXi host must verify the exception users list for Lockdown Mode.
 - name: V-239260 - ESXI-67-000003
   community.vmware.vmware_host_lockdown_exceptions:
     hostname: '{{ vcenter_hostname }}'
@@ -36,6 +38,7 @@
   when:
     - vSphere67ESXi_V239260_Manage
 
+# V-239261: Remote logging for ESXi hosts must be configured.
 - name: V-239261 - ESXI-67-000004
   community.vmware.vmware_host_config_manager:
     hostname: '{{ vcenter_hostname }}'
@@ -48,6 +51,7 @@
   when:
     - vSphere67ESXi_V239261_Manage
 
+# V-239262: The ESXi host must enforce the limit of three consecutive invalid logon attempts by a user.
 - name: V-239262 - ESXI-67-000005
   community.vmware.vmware_host_config_manager:
     hostname: '{{ vcenter_hostname }}'
@@ -60,4 +64,62 @@
   when:
     - vSphere67ESXi_V239262_Manage
   
+# V-239263: The ESXi host must enforce the unlock timeout of 15 minutes after a user account is locked out.
+- name: V-239263 - ESXI-67-000006
+  community.vmware.vmware_host_config_manager:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    esxi_hostname: '{{ esxi_hostname }}'
+    options:
+      'Security.AccountLockFailures': {{ vSphere67ESXi_V239263_AccountUnlockTime }}
+  delegate_to: localhost
+  when:
+    - vSphere67ESXi_V239263_Manage
 
+# V-239264: The ESXi host must display the Standard Mandatory DoD Notice and Consent Banner before granting access to the system via the DCUI.
+
+# V-239265: The ESXi host must display the Standard Mandatory DoD Notice and Consent Banner before granting access to the system via SSH.
+- name: V-239265 - ESXI-67-000008
+  community.vmware.vmware_host_config_manager:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    esxi_hostname: '{{ esxi_hostname }}'
+    options:
+      'Config.Etc.issue': '{{ vSphere67ESXi_V239265_etc_issue }}'
+  delegate_to: localhost
+  when:
+    - vSphere67ESXi_V239265_Manage
+
+# Start the SSH Service on the host to complete the next several tasks
+- name: Start SSH Service
+  community.vmware.vmware_host_service_manager:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    esxi_hostname: '{{ esxi_hostname }}'
+    service_name: 'TSM-SSH'
+    state: 'start'
+  delegate_to: localhost
+
+# V-239266: The ESXi host SSH daemon must be configured with the DoD logon banner.
+- name: V-239266 - ESXI-67-000009
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^\s*(?i)Banner\s+'
+    line: "{{ vSphere67ESXi_V239266_Banner_Line }}"
+    state: present
+  when:
+    - vSphere67ESXi_V239266_Manage
+  
+# Stop the SSH Service
+- name: Stop SSH Service
+  community.vmware.vmware_host_service_manager:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    esxi_hostname: '{{ esxi_hostname }}'
+    service_name: 'TSM-SSH'
+    state: 'stop'
+  delegate_to: localhost
