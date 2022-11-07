@@ -118,8 +118,8 @@ vSphere67ESXi_V239298_Manage: True
 vSphere67ESXi_V239298_DcuiTimeOut: 120
 # V-239302 - ESXI-67-000047
 vSphere67ESXi_V239302_Manage: True
-# - STIG-Compliant Values: VMwareCertified, VMwareAccepted, or PartnerSupported
-vSphere67ESXi_V239302_Acceptance_Level: PartnerSupported
+# - STIG-Compliant Values: vmware_certified, vmware_accepted, or partner
+vSphere67ESXi_V239302_Acceptance_Level: partner
 # V-239309 - ESXI-67-000055
 vSphere67ESXi_V239309_Manage: True
 vSphere67ESXi_V239309_Mem_ShareForceSalting: 2
