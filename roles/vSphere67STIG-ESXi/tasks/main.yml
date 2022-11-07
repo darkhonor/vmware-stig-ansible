@@ -535,7 +535,7 @@
   register: esxi_about_info
 - name: Current Version is Current
   debug:
-    msg: "System Version: {{ esxi_about_info.version }}"
+    msg: "System Version: {{ esxi_about_info.about_info.version }}"
 - name: Validate Patch Version is Current
   debug:
-    msg: "System Build Version: {{ esxi_about_info.build }}"
+    msg: "System Build Version: {{ esxi_about_info.about_info.build }}"
