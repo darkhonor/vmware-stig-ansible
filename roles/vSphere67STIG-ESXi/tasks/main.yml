@@ -84,6 +84,18 @@
     - vSphere67ESXi_V239263_Manage
 
 # V-239264: The ESXi host must display the Standard Mandatory DoD Notice and Consent Banner before granting access to the system via the DCUI.
+- name: V-239264 - ESXI-67-000007
+  community.vmware.vmware_host_config_manager:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    esxi_hostname: '{{ esxi_hostname }}'
+    validate_certs: '{{ vSphere67_Validate_Certs }}'
+    options:
+      'Annotations.WelcomeMessage': '{{ vSphere67ESXi_V239264_WelcomeMessage }}'
+  delegate_to: localhost
+  when:
+    - vSphere67ESXi_V239264_Manage
 
 # V-239265: The ESXi host must display the Standard Mandatory DoD Notice and Consent Banner before granting access to the system via SSH.
 - name: V-239265 - ESXI-67-000008
@@ -310,3 +322,220 @@
     service_name: 'TSM-SSH'
     state: 'stop'
   delegate_to: localhost
+
+# V-239285: The ESXi host must produce audit records containing information to establish what type of events occurred.
+- name: V-239285 - ESXI-67-000030
+  community.vmware.vmware_host_config_manager:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    esxi_hostname: '{{ esxi_hostname }}'
+    validate_certs: '{{ vSphere67_Validate_Certs }}'
+    options:
+      'Config.HostAgent.log.level': '{{ vSphere67ESXi_V239285_LogLevel }}'
+  delegate_to: localhost
+  when:
+    - vSphere67ESXi_V239285_Manage
+
+# V-239286: The ESXi host must enforce password complexity by requiring that at least one uppercase character be used.
+- name: V-239286 - ESXI-67-000031
+  community.vmware.vmware_host_config_manager:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    esxi_hostname: '{{ esxi_hostname }}'
+    validate_certs: '{{ vSphere67_Validate_Certs }}'
+    options:
+      'Security.PasswordQualityControl': '{{ vSphere67ESXi_V239286_PasswordQualityControl }}'
+  delegate_to: localhost
+  when:
+    - vSphere67ESXi_V239286_Manage
+
+# V-239287: The ESXi host must prohibit the reuse of passwords within five iterations.
+- name: V-239287 - ESXI-67-000032
+  community.vmware.vmware_host_config_manager:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    esxi_hostname: '{{ esxi_hostname }}'
+    validate_certs: '{{ vSphere67_Validate_Certs }}'
+    options:
+      'Security.PasswordHistory': '{{ vSphere67ESXi_V239287_PasswordHistory }}'
+  delegate_to: localhost
+  when:
+    - vSphere67ESXi_V239287_Manage
+
+# V-239288: The password hashes stored on the ESXi host must have been generated using a FIPS 140-2 approved cryptographic hashing algorithm.
+# TODO
+
+# V-239289: The ESXi host must disable the Managed Object Browser (MOB).
+- name: V-239289 - ESXI-67-000034
+  community.vmware.vmware_host_config_manager:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    esxi_hostname: '{{ esxi_hostname }}'
+    validate_certs: '{{ vSphere67_Validate_Certs }}'
+    options:
+      'Config.HostAgent.plugins.solo.enableMob': '{{ vSphere67ESXi_V239289_enableMob }}'
+  delegate_to: localhost
+  when:
+    - vSphere67ESXi_V239289_Manage
+
+# V-239290: The ESXi host must be configured to disable nonessential capabilities by disabling SSH.
+- name: V-239290 - ESXI-67-000035
+  community.vmware.vmware_host_service_manager:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    esxi_hostname: '{{ esxi_hostname }}'
+    validate_certs: '{{ vSphere67_Validate_Certs }}'
+    service_name: 'TSM-SSH'
+    policy: '{{ vSphere67ESXi_V239290_SSH_Policy }}'
+    state: '{{ vSphere67ESXi_V239290_SSH_State }}'
+  delegate_to: localhost
+  when:
+    - vSphere67ESXi_V239290_Manage
+
+# V-239291: The ESXi host must disable ESXi Shell unless needed for diagnostics or troubleshooting.
+- name: V-239291 - ESXI-67-000036
+  community.vmware.vmware_host_service_manager:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    esxi_hostname: '{{ esxi_hostname }}'
+    validate_certs: '{{ vSphere67_Validate_Certs }}'
+    service_name: 'TSM'
+    policy: '{{ vSphere67ESXi_V239291_ESXi_Shell_Policy }}'
+    state: '{{ vSphere67ESXi_V239291_ESXi_Shell_State }}'
+  delegate_to: localhost
+  when:
+    - vSphere67ESXi_V239291_Manage
+
+# V-239294: Active Directory ESX Admin group membership must not be used when adding ESXi hosts to Active Directory.
+- name: V-239294 - ESXI-67-000039
+  community.vmware.vmware_host_config_manager:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    esxi_hostname: '{{ esxi_hostname }}'
+    validate_certs: '{{ vSphere67_Validate_Certs }}'
+    options:
+      'Config.HostAgent.plugins.hostsvc.esxAdminsGroup': '{{ vSphere67ESXi_V239294_AD_ESXi_Admins }}'
+  delegate_to: localhost
+  when:
+    - vSphere67ESXi_V239294_Manage
+
+# V-239296: The ESXi host must set a timeout to automatically disable idle shell sessions after two minutes.
+- name: V-239296 - ESXI-67-000041
+  community.vmware.vmware_host_config_manager:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    esxi_hostname: '{{ esxi_hostname }}'
+    validate_certs: '{{ vSphere67_Validate_Certs }}'
+    options:
+      'UserVars.ESXiShellInteractiveTimeOut': '{{ vSphere67ESXi_V239296_ESXiShellInteractiveTimeOut }}'
+  delegate_to: localhost
+  when:
+    - vSphere67ESXi_V239296_Manage
+
+# V-239297: The ESXi host must terminate shell services after 10 minutes.
+- name: V-239297 - ESXI-67-000042
+  community.vmware.vmware_host_config_manager:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    esxi_hostname: '{{ esxi_hostname }}'
+    validate_certs: '{{ vSphere67_Validate_Certs }}'
+    options:
+      'UserVars.ESXiShellTimeOut': '{{ vSphere67ESXi_V239297_ESXiShellTimeOut }}'
+  delegate_to: localhost
+  when:
+    - vSphere67ESXi_V239297_Manage
+
+# V-239298: The ESXi host must log out of the console UI after two minutes.
+- name: V-239298 - ESXI-67-000043
+  community.vmware.vmware_host_config_manager:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    esxi_hostname: '{{ esxi_hostname }}'
+    validate_certs: '{{ vSphere67_Validate_Certs }}'
+    options:
+      'UserVars.DcuiTimeOut': '{{ vSphere67ESXi_V239298_DcuiTimeOut }}'
+  delegate_to: localhost
+  when:
+    - vSphere67ESXi_V239298_Manage
+
+# V-239302: The ESXi Image Profile and vSphere Installation Bundle (VIB) Acceptance Levels must be verified.
+- name: V-239302 - ESXI-67-000047
+  community.vmware.vmware_host_acceptance:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    esxi_hostname: '{{ esxi_hostname }}'
+    validate_certs: '{{ vSphere67_Validate_Certs }}'
+    acceptance_level: '{{ vSphere67ESXi_V239302_Acceptance_Level }}'
+    state: present
+  delegate_to: localhost
+  when:
+    - vSphere67ESXi_V239302_Manage
+
+# V-239309: The ESXi host must disable Inter-VM transparent page sharing.
+- name: V-239309 - ESXI-67-000055
+  community.vmware.vmware_host_config_manager:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    esxi_hostname: '{{ esxi_hostname }}'
+    validate_certs: '{{ vSphere67_Validate_Certs }}'
+    options:
+      'Mem.ShareForceSalting': '{{ vSphere67ESXi_V239309_Mem_ShareForceSalting }}'
+  delegate_to: localhost
+  when:
+    - vSphere67ESXi_V239309_Manage
+
+# V-239312: The ESXi host must enable BPDU filter on the host to prevent being locked out of physical switch ports with Portfast and BPDU Guard enabled.
+- name: V-239312 - ESXI-67-000058
+  community.vmware.vmware_host_config_manager:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    esxi_hostname: '{{ esxi_hostname }}'
+    validate_certs: '{{ vSphere67_Validate_Certs }}'
+    options:
+      'Net.BlockGuestBPDU': '{{ vSphere67ESXi_V239312_BlockGuestBPDU }}'
+  delegate_to: localhost
+  when:
+    - vSphere67ESXi_V239312_Manage
+
+# V-239316: The ESXi host must prevent unintended use of the dvFilter network APIs.
+- name: V-239316 - ESXI-67-000062
+  community.vmware.vmware_host_config_manager:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    esxi_hostname: '{{ esxi_hostname }}'
+    validate_certs: '{{ vSphere67_Validate_Certs }}'
+    options:
+      'Net.DVFilterBindIpAddress': '{{ vSphere67ESXi_V239316_DVFilterBindIpAddress }}'
+  delegate_to: localhost
+  when:
+    - vSphere67ESXi_V239316_Manage
+
+# V-239325: The ESXi host must have all security patches and updates installed.
+- name: V-239325 - ESXI-67-000072
+  community.vmware.vmware_about_info:
+    hostname: '{{ esxi_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    validate_certs: '{{ vSphere67_Validate_Certs }}'
+  delegate_to: localhost
+  register: esxi_about_info
+- name: Current Version is Current
+  debug:
+  msg: "System Version: {{ esxi_about_info.version }}"
+- name: Validate Patch Version is Current
+  debug:
+  msg: "System Build Version: {{ esxi_about_info.build }}"

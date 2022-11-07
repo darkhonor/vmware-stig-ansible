@@ -1,7 +1,11 @@
 # This is a collection of variables for the local site.  Use this file to overwrite any option from the STIG
 # Example:
+Current_Version: 7.0.3
+Current_Patch_Level: 20328353
 vSphere67ESXi_V239258_Manage: False
 vSphere67ESXi_V239258_Lockdown: disabled
 vSphere67ESXi_V239260_Manage: False
 vSphere67ESXi_V239270_Manage: False
 vSphere67ESXi_V239270_PermitRootLogin: PermitRootLogin yes
+# For this item, enter the IP Address of your security appliance using the dvFilter API
+#vSphere67ESXi_V239316_DVFilterBindIpAddress: 
