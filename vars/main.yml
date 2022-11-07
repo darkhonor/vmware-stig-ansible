@@ -1,6 +1,6 @@
 ---
 # vars file for vmware-ansible
-vcenter_hostname: 192.168.19.131
+vcenter_hostname: 192.168.19.135
 vcenter_username: root
 vcenter_password: 1qazXDR%2wsxCFT^
 vSphere67_Validate_Certs: no

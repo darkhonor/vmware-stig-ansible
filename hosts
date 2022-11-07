@@ -1,2 +1,2 @@
 [esxi]
-192.168.19.131 ansible_connection=ssh ansible_user=root
+192.168.19.135 ansible_connection=ssh ansible_user=root
