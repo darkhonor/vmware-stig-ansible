@@ -391,7 +391,7 @@
     esxi_hostname: '{{ esxi_hostname }}'
     validate_certs: '{{ vSphere67_Validate_Certs }}'
     service_name: 'TSM-SSH'
-    policy: '{{ vSphere67ESXi_V239290_SSH_Policy }}'
+    service_policy: '{{ vSphere67ESXi_V239290_SSH_Policy }}'
     state: '{{ vSphere67ESXi_V239290_SSH_State }}'
   delegate_to: localhost
   when:
@@ -406,7 +406,7 @@
     esxi_hostname: '{{ esxi_hostname }}'
     validate_certs: '{{ vSphere67_Validate_Certs }}'
     service_name: 'TSM'
-    policy: '{{ vSphere67ESXi_V239291_ESXi_Shell_Policy }}'
+    service_policy: '{{ vSphere67ESXi_V239291_ESXi_Shell_Policy }}'
     state: '{{ vSphere67ESXi_V239291_ESXi_Shell_State }}'
   delegate_to: localhost
   when:
