@@ -297,7 +297,7 @@
 - name: V-239283 - ESXI-67-000028
   lineinfile:
     path: /etc/ssh/sshd_config
-    regexp: '^\s*(?i)ClientAliveInterval\s+'
+    regexp: '^\s*(?i)MaxSessions\s+'
     line: "{{ vSphere67ESXi_V239283_MaxSessions }}"
     state: present
   when:
@@ -310,6 +310,16 @@
     content: "{{ vSphere67ESXi_V239284_etc_ssh_keys_authorized_keys_Content }}"
   when:
     - vSphere67ESXi_V239284_Manage
+
+# V-239331: The ESXi host SSH daemon must be configured to only use FIPS 140-2 approved ciphers.
+- name: V-239331 - ESXI-67-100010
+  lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: '^\s*(?i)Ciphers\s+'
+    line: "{{ vSphere67ESXi_V239331_FIPS_Ciphers }}"
+    state: present
+  when:
+    - vSphere67ESXi_V239331_Manage
 
 # Stop the SSH Service
 - name: Stop SSH Service
@@ -554,4 +564,18 @@
   delegate_to: localhost
   when:
     - vSphere67ESXi_V239326_Manage
+
+# V-239329: The ESXi host must not suppress warnings that the local or remote shell sessions are enabled
+- name: V-239329 - ESXI-67-000079
+  community.vmware.vmware_host_config_manager:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    esxi_hostname: '{{ esxi_hostname }}'
+    validate_certs: '{{ vSphere67_Validate_Certs }}'
+    options:
+      'UserVars.SuppressShellWarning': '{{ vSphere67ESXi_V239329_SuppressShellWarning }}'
+  delegate_to: localhost
+  when:
+    - vSphere67ESXi_V239329_Manage
 

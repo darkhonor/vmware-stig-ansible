@@ -132,4 +132,9 @@ vSphere67ESXi_V239316_DVFilterBindIpAddress: ''
 # V-239326 - ESXI-67-000074
 vSphere67ESXi_V239326_Manage: True
 vSphere67ESXi_V239326_ESXiVPsDisabledProtocols: tlsv1,tlsv1.1,sslv3
-
+# V-239329 - ESXI-67-000079
+vSphere67ESXi_V239329_Manage: True
+vSphere67ESXi_V239329_SuppressShellWarning: 0
+# V-239331 - ESXI-67-100010
+vSphere67ESXi_V239331_Manage: True
+vSphere67ESXi_V239331_FIPS_Ciphers: Ciphers aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr
