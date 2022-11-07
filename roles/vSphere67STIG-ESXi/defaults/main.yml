@@ -129,4 +129,7 @@ vSphere67ESXi_V239312_BlockGuestBPDU: 1
 # V-239316 - ESXI-67-000062
 vSphere67ESXi_V239316_Manage: True
 vSphere67ESXi_V239316_DVFilterBindIpAddress: ''
+# V-239326 - ESXI-67-000074
+vSphere67ESXi_V239326_Manage: True
+vSphere67ESXi_V239326_ESXiVPsDisabledProtocols: tlsv1,tlsv1.1,sslv3
 
