@@ -540,3 +540,18 @@
       - esxi_about_info.about_info.build >= '{{ Current_Patch_Level }}'
     fail_msg: "System is not running the Correct Version of ESXi"
     success_msg: "System is running a current version of ESXi (per site_local_vars)"
+
+# V-239326: The ESXi host must exclusively enable TLS 1.2 for all endpoints.
+- name: V-239326 - ESXI-67-000074
+  community.vmware.vmware_host_config_manager:
+    hostname: '{{ vcenter_hostname }}'
+    username: '{{ vcenter_username }}'
+    password: '{{ vcenter_password }}'
+    esxi_hostname: '{{ esxi_hostname }}'
+    validate_certs: '{{ vSphere67_Validate_Certs }}'
+    options:
+      'UserVars.ESXiVPsDisabledProtocols': '{{ vSphere67ESXi_V239326_ESXiVPsDisabledProtocols }}'
+  delegate_to: localhost
+  when:
+    - vSphere67ESXi_V239326_Manage
+

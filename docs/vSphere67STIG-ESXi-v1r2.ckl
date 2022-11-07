@@ -8831,7 +8831,7 @@ Update the documentation according to an organization-defined frequency or whene
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>Not_Applicable</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
 				<COMMENTS></COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
@@ -8962,7 +8962,7 @@ Update the documentation on an organization defined frequency or whenever modifi
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>Not_Applicable</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
 				<COMMENTS></COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
@@ -9089,7 +9089,7 @@ Remove any VLANs trunked across physical ports connected to ESXi hosts that are 
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>Not_Applicable</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
 				<COMMENTS></COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
@@ -9362,7 +9362,7 @@ If the physical media is obtained from VMware and the security seal is broken, t
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>Not_Applicable</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
 				<COMMENTS></COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
@@ -9507,7 +9507,7 @@ esxcli software vib update -d &lt;path to offline patch bundle.zip&gt;</ATTRIBUT
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
 				<COMMENTS></COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
@@ -9662,7 +9662,7 @@ A host reboot is required for changes to take effect.</ATTRIBUTE_DATA>
 					<VULN_ATTRIBUTE>CCI_REF</VULN_ATTRIBUTE>
 					<ATTRIBUTE_DATA>CCI-000366</ATTRIBUTE_DATA>
 				</STIG_DATA>
-				<STATUS>Not_Reviewed</STATUS>
+				<STATUS>NotAFinding</STATUS>
 				<FINDING_DETAILS></FINDING_DETAILS>
 				<COMMENTS></COMMENTS>
 				<SEVERITY_OVERRIDE></SEVERITY_OVERRIDE>
