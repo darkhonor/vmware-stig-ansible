@@ -535,8 +535,8 @@
   register: esxi_about_info
 - name: Current Version is Current
   ansible.builtin.assert:
-  that:
-    - esxi_about_info.about_info.version >= '{{ Current_Version }}'
-    - esxi_about_info.about_info.build >= '{{ Current_Patch_Level }}'
-  fail_msg: "System is not running the Correct Version of ESXi"
-  success_msg: "System is running a current version of ESXi (per site_local_vars)"
+    that:
+      - esxi_about_info.about_info.version >= '{{ Current_Version }}'
+      - esxi_about_info.about_info.build >= '{{ Current_Patch_Level }}'
+    fail_msg: "System is not running the Correct Version of ESXi"
+    success_msg: "System is running a current version of ESXi (per site_local_vars)"
