@@ -1,4 +1,4 @@
 ---
 # vars file for vmware-ansible
-vcenter_hostname: 192.168.19.135
+vcenter_hostname: 10.110.11.134
 vSphere67_Validate_Certs: no
