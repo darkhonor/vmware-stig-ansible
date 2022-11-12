@@ -6,7 +6,12 @@ This is a collection of scripts to automate management of VMware servers.  The i
 Requirements
 ------------
 
-This collection requires community.vmware to be loaded to the local ansible server.  I am also forcing the use of Ansible Vault to store secrets.  If you have the ability, under /etc/ansible, create a folder called 'group_vars'.  In this folder, create two new folders 'esxi' and 'vcenter'.  In each of these, we will create a 'vars' file using any text editor, and a 'vault' file that will be created with ansible-vault.  Your
+This collection requires the following Ansible Galaxy Collections:
+
+  ansible-galaxy collection install community.vmware
+  ansible-galaxy collection install vmware.vmware_rest
+
+I am also forcing the use of Ansible Vault to store secrets.  If you have the ability, under /etc/ansible, create a folder called 'group_vars'.  In this folder, create two new folders 'esxi' and 'vcenter'.  In each of these, we will create a 'vars' file using any text editor, and a 'vault' file that will be created with ansible-vault.  Your
 folder structure should look like this:
 
     /group_vars
