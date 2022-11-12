@@ -4,4 +4,4 @@
 
 # This version will refer to the vault password in ~/.ansible/vault_password.
 # KEEP THIS PASSWORD SECURE AND DO NOT SHARE OR STORE TO GIT
-ansible-playbook -v -k --vault-password-file ~/.ansible/vault_password -i hosts -i hosts.vmware.yml site.yml
+ansible-playbook -v -k --vault-password-file ~/.ansible/vault_password -e @/etc/ansible/group_vars/esxi/vars -e @/etc/ansible/group_vars/esxi/vault -i hosts -i hosts.vmware.yml site.yml
