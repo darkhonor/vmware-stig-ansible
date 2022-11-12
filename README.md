@@ -1,13 +1,40 @@
 VMware Ansible Scripts
 ======================
 
-This is a collection of scripts to automate management of VMware servers.  The initial scripts will focus on 
-securing the system in accordance with the current, published DISA Security Technical Information Guides (STIGs).
+This is a collection of scripts to automate management of VMware servers.  The initial scripts will focus on securing the system in accordance with the current, published DISA Security Technical Information Guides (STIGs).
 
 Requirements
 ------------
 
-This collection requires community.vmware to be loaded to the local ansible server.
+This collection requires community.vmware to be loaded to the local ansible server.  I am also forcing the use of Ansible Vault to store secrets.  If you have the ability, under /etc/ansible, create a folder called 'group_vars'.  In this folder, create two new folders 'esxi' and 'vcenter'.  In each of these, we will create a 'vars' file using any text editor, and a 'vault' file that will be created with ansible-vault.  Your
+folder structure should look like this:
+
+    /group_vars
+      /vcenter
+        vars
+        vault
+      /esxi
+        vars
+        vault
+
+You will create the vault file using this command:
+
+  ansible-vault create vault
+
+Inside the 'vault' files, add the appropriate password entry for the vCenter or ESXi hosts:
+
+  ---
+  esxi_password: VMware11!!
+
+Now, in the 'vars' file, create the overall ansible variables to use that are specific to either the vCenter or the ESXi hosts:
+
+  ---
+  esxi_username: root
+  esxi_password: "{{ vault_esxi_password }}"
+
+Now, whenever my scripts call for esxi_password, they will request the Vault password and decrypt the password.  This will keep the passwords out of the Git repository.  It's some initial legwork, but a better security practice in general.  
+
+I have adjusted the secure.sh script to ask for the vault password now.
 
 Role Variables
 --------------
