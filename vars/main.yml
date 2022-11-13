@@ -1,6 +1,4 @@
 ---
 # vars file for vmware-ansible
 vcenter_hostname: 10.110.11.134
-vcenter_username: root
-vcenter_password: "{{ vault_esxi_password }}"
 vSphere67_Validate_Certs: no
